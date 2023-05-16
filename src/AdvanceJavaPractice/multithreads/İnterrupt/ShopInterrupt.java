@@ -1,19 +1,20 @@
-package AdvanceJavaPractice.multithreads.waitNotify;
+package AdvanceJavaPractice.multithreads.İnterrupt;
+
+import AdvanceJavaPractice.multithreads.waitNotify.ShopWaitNotify;
 
 /*
-Task: Bir marketteki stok miktarını takip eden bir uygulama tasarlayınız.
-Marketteki yeterli ürün yoksa yeni ürün gelmesi beklensin.
-Yeni ürün eklenince ürün satışı gerçekleşsin
+Bir marketteki stock miktarınıtakip eden bir uygulama tasarlayınız.
+Markette yeterki ürün yoksa yeni ürün gelmesini beklesin.
+Yeni ürün eklenince ürün satışı gerçekleşsin.
  */
-
-public class ShopWaitNotify {
+public class ShopInterrupt {
     //public static int stock = 0;  sonradan volatile ekledik
     public static volatile int stock = 1;
 
     public static void main(String[] args) {
         //bu bölümü if bloğu ve methodlar bittikten sonra yaz
 
-        ShopWaitNotify shop = new ShopWaitNotify();
+        ShopInterrupt shop=new ShopInterrupt();
 
         Thread consumerThread = new Thread(new Runnable() {
             @Override
@@ -32,7 +33,8 @@ public class ShopWaitNotify {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                shop.produceProduct(1);
+                shop.produceProduct(3);
+                consumerThread.interrupt();
             }
         });
         producerThread.setName("Üretici");
@@ -53,24 +55,24 @@ public class ShopWaitNotify {
             try {
                 wait();
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                //önce burayı yaz
+                if (amount <= stock) {
+                    System.out.println();
+                    System.out.println(Thread.currentThread().getName() + " ürün satın almak istiyor.");
+                    System.out.println("Ürün satın alındı ve stocktan düşülüyor. ");
+                    stock = stock - amount;
+                    System.out.println("Güncel stok : " + stock);
+                }
+                //else yi en son yaz
+                else {
+                    System.out.println(Thread.currentThread().getName() + " ürün satın almak istiyor.");
+                    System.out.println("Yeterli ürün yok, Güncel ürün stoğu : " + stock);
+                    System.out.println("Bugün git yarın gel:)");
+                }
             }
         }
 
-        //önce burayı yaz
-        if (amount <= stock) {
-            System.out.println();
-            System.out.println(Thread.currentThread().getName() + " ürün satın almak istiyor.");
-            System.out.println("Ürün satın alındı ve stocktan düşülüyor. ");
-            stock = stock - amount;
-            System.out.println("Güncel stok : " + stock);
-        }
-        //else yi en son yaz
-        else {
-            System.out.println(Thread.currentThread().getName() + " ürün satın almak istiyor.");
-            System.out.println("Yeterli ürün yok, Güncel ürün stoğu : " + stock);
-            System.out.println("Bugün git yarın gel:)");
-        }
+
     }
 
     public synchronized void produceProduct(int amount) {
@@ -82,4 +84,5 @@ public class ShopWaitNotify {
         notify();
         System.out.println();
     }
+
 }

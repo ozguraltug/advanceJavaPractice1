@@ -13,18 +13,18 @@ public class GenericMethod {
         printArray(pointList);
         printArray(gradeList);
         //2.Öğrencileri isimlerine göre sıralayınız
-        System.out.printf(Arrays.toString(orderArr(stdList)));
+        System.out.println(Arrays.toString(orderArr(stdList)));
         System.out.println("");
 
 
         //3.Öğrenci notlarını sıralayınız
 
-        System.out.printf(Arrays.toString(orderArr(pointList)));
+        System.out.println(Arrays.toString(orderArr(pointList)));
         System.out.println("");
 
         //4.Öğrenci harf notlarını sıralayınız
 
-        System.out.printf(Arrays.toString(orderArr(gradeList)));
+        System.out.println(Arrays.toString(orderArr(gradeList)));
     }
 
     //5.Diziyi yazdıran bir method yazınız

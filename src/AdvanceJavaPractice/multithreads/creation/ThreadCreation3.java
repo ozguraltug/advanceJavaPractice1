@@ -4,7 +4,7 @@ public class ThreadCreation3 {
     public static void main(String[] args) {
 
         //Task: anonymous class kullanarak thread oluşturunuz.
-        //lambda expression kullanarak thread oluşturunuz
+
 
         Thread thread1=new Thread(new Runnable() {
             @Override

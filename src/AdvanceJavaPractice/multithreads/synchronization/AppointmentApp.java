@@ -3,7 +3,7 @@ package AdvanceJavaPractice.multithreads.synchronization;
 //istenmeyen sonuçlar oluşacaktır. Bu durumda threadlere sırayla erişim vermek gerekecektir.
 //Bir thread kaynağı kullanırken diğerleri onu beklemelidirler. Bu "synchronized" keywordu ile sağlanır.
 
-/* Task: Bir randevu oluşturma uygulamsı tanımlayınız. (AppointmentCenter)
+/* Task: Bir randevu oluşturma uygulaması tasarlayınız.. (AppointmentCenter)
 Uygulama herbir talep için bir gün sonrasını tarih vermelidir.
  */
 public class AppointmentApp {

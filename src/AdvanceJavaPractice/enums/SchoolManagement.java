@@ -24,7 +24,7 @@ public class SchoolManagement {
 
     public static void deleteStudent(Student std, User user) {
         if (user.getRole().equals(Role.ROLE_ADMIN) || user.getRole().equals(Role.ROLE_TEACHER)) {
-            System.out.println("Student is deletede successfully by " + user.getRole().getName());
+            System.out.println("Student is deleted successfully by " + user.getRole().getName());
 
         } else {
             System.out.println(user.getRole().getName() + " is not permited to delete Student");
@@ -33,7 +33,7 @@ public class SchoolManagement {
 
     public static void deleteTeacher(Teacher teacher, User user) {
         if (user.getRole().equals(Role.ROLE_ADMIN)) {
-            System.out.println("Teacher is deletede successfully by " + user.getRole().getName());
+            System.out.println("Teacher is deleted successfully by " + user.getRole().getName());
 
         } else {
             System.out.println(user.getRole().getName() + " is not permited to delete Teacher");
