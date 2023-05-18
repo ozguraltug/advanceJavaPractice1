@@ -27,7 +27,7 @@ public class SemaphorePr {
         person2.start();
         person3.start();
         person4.start();
-        person5.start();
+
 
     }
 }

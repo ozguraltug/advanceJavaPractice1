@@ -40,6 +40,7 @@ class MyThread extends Thread {
     private AppointmentCenter2 appointmentCenter;
 
     public MyThread(AppointmentCenter2 appointmentCenter) {
+
         this.appointmentCenter = appointmentCenter;
     }
 

@@ -18,6 +18,7 @@ public class ShopWaitNotify {
         Thread consumerThread = new Thread(new Runnable() {
             @Override
             public void run() {
+
                 shop.consumeProduct(3);
             }
         });
@@ -32,7 +33,7 @@ public class ShopWaitNotify {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                shop.produceProduct(1);
+                shop.produceProduct(4);
             }
         });
         producerThread.setName("Üretici");
